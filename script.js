@@ -58,6 +58,24 @@ function addPressHandlers(selector) {
 
 addPressHandlers('.btn, .project-card, .skill-card, .stat-card, .site-nav a, .brand-logo');
 
+// mobile menu toggle
+const navToggle = document.querySelector('.nav-toggle');
+const siteNav = document.getElementById('siteNav');
+
+if (navToggle && siteNav) {
+  navToggle.addEventListener('click', () => {
+    const isOpen = navToggle.classList.toggle('open');
+    siteNav.classList.toggle('active', isOpen);
+  });
+
+  document.querySelectorAll('#siteNav a').forEach((link) => {
+    link.addEventListener('click', () => {
+      navToggle.classList.remove('open');
+      siteNav.classList.remove('active');
+    });
+  });
+}
+
 // Project modal handling
 const modal = document.getElementById('project-modal');
 const modalTitle = document.getElementById('modal-title');
