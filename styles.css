@@ -661,6 +661,7 @@ h2 {
 @media (max-width: 760px) {
   .hero-brand {
     gap: 14px;
+    width: 100%;
   }
 
   .brand-logo {
@@ -705,6 +706,8 @@ h2 {
     width: 100%;
     text-align: center;
     padding: 14px 16px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 14px;
   }
 
   .nav-toggle {
