@@ -156,26 +156,15 @@ h1 {
 }
 
 .subtitle {
-  color: #8abbd1;
-  margin: 16px 0 24px;
-  font-size: 1.1rem;
-}
-
-.lead {
-  max-width: 38rem;
+  display: none;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  padding: 12px;
+  margin-left: auto;
+  position: relative;
   color: #d5e0ff;
-  margin-bottom: 32px;
-}
 
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
   justify-content: center;
   gap: 10px;
   padding: 14px 24px;
@@ -773,9 +762,38 @@ h2 {
     display: inline-flex;
   }
 
-  /* hide any spans or pseudo elements inside toggle on mobile */
-  .nav-toggle, .nav-toggle * { background: transparent !important; border: 0 !important; box-shadow: none !important; }
-  .nav-toggle span { display: none !important; }
+  /* show classic 3-line hamburger on mobile */
+  .nav-toggle span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    margin: 3px 0;
+    background: #e7edf8;
+    border-radius: 999px;
+    transition: transform 200ms ease, opacity 200ms ease;
+  }
+
+  .nav-toggle.open span:nth-child(1) {
+    transform: translateY(5px) rotate(45deg);
+  }
+
+  .nav-toggle.open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav-toggle.open span:nth-child(3) {
+    transform: translateY(-5px) rotate(-45deg);
+  }
+
+  /* side panel styles */
+  .side-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.45); opacity: 0; pointer-events: none; transition: opacity 220ms ease; z-index: 48; }
+  .side-backdrop.open { opacity: 1; pointer-events: auto; }
+
+  .side-panel { position: fixed; top: 0; right: 0; width: min(320px, 88%); height: 100vh; background: linear-gradient(180deg, rgba(7,16,37,0.98), rgba(10,20,40,0.98)); box-shadow: -24px 0 60px rgba(2,6,23,0.6); transform: translateX(110%); transition: transform 320ms cubic-bezier(.2,.9,.2,1); z-index: 50; padding: 28px 18px; display: flex; flex-direction: column; gap: 14px; }
+  .side-panel.open { transform: translateX(0); }
+  .side-close { background: transparent; border: 0; color: #eaf3ff; font-size: 20px; margin-left: auto; cursor: pointer; }
+  .side-nav { display:flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+  .side-nav a { color: #eaf3ff; padding: 12px 14px; border-radius: 12px; background: rgba(255,255,255,0.02); }
 
   /* reduce hero-blob horizontal overflow on small screens */
   .hero-blob { right: -2%; left: auto; }

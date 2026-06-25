@@ -58,22 +58,29 @@ function addPressHandlers(selector) {
 
 addPressHandlers('.btn, .project-card, .skill-card, .stat-card, .site-nav a, .brand-logo');
 
-// mobile menu toggle
+// mobile side-panel menu toggle
 const navToggle = document.querySelector('.nav-toggle');
-const siteNav = document.getElementById('siteNav');
+const sidePanel = document.getElementById('sidePanel');
+const sideBackdrop = document.getElementById('sideBackdrop');
 
-if (navToggle && siteNav) {
+if (navToggle && sidePanel && sideBackdrop) {
+  function openSide(open) {
+    navToggle.classList.toggle('open', open);
+    sidePanel.classList.toggle('open', open);
+    sideBackdrop.classList.toggle('open', open);
+    sidePanel.setAttribute('aria-hidden', !open);
+  }
+
   navToggle.addEventListener('click', () => {
-    const isOpen = navToggle.classList.toggle('open');
-    siteNav.classList.toggle('active', isOpen);
+    const isOpen = !sidePanel.classList.contains('open');
+    openSide(isOpen);
   });
 
-  document.querySelectorAll('#siteNav a').forEach((link) => {
-    link.addEventListener('click', () => {
-      navToggle.classList.remove('open');
-      siteNav.classList.remove('active');
-    });
-  });
+  // close controls
+  sideBackdrop.addEventListener('click', () => openSide(false));
+  sidePanel.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => openSide(false)));
+  const sideClose = sidePanel.querySelector('.side-close');
+  if (sideClose) sideClose.addEventListener('click', () => openSide(false));
 }
 
 // Project modal handling
