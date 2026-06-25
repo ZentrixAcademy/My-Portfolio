@@ -21,6 +21,9 @@ html {
   scroll-behavior: smooth;
 }
 
+/* prevent horizontal overflow on small devices */
+html, body { overflow-x: hidden; }
+
 body {
   margin: 0;
   min-height: 100%;
@@ -460,6 +463,9 @@ h2 {
   z-index: 1;
 }
 
+/* ensure header doesn't create horizontal scrollbar */
+.site-header { overflow-x: hidden; }
+
 /* subtle tilt on hover for hero card */
 .hero-card:hover { transform: translateY(-6px) rotate(-0.5deg); transition: transform 220ms ease; }
 
@@ -767,6 +773,12 @@ h2 {
     display: inline-flex;
   }
 
+  /* hide any spans or pseudo elements inside toggle on mobile */
+  .nav-toggle, .nav-toggle * { background: transparent !important; border: 0 !important; box-shadow: none !important; }
+  .nav-toggle span { display: none !important; }
+
+  /* reduce hero-blob horizontal overflow on small screens */
+  .hero-blob { right: -2%; left: auto; }
   /* ensure the visual bars are hidden on mobile too */
   .nav-toggle span {
     display: none !important;
