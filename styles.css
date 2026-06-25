@@ -189,7 +189,7 @@ h1 {
 /* small rectangular button variant used for compact CTAs */
 .btn-rect {
   padding: 8px 12px;
-  border-radius: 10px;
+  border-radius: 12px;
   min-width: 0;
   white-space: nowrap;
 }
@@ -838,9 +838,9 @@ h2 {
     gap: 10px;
   }
 
-  .btn {
-    width: 100%;
-  }
+  /* keep primary .btn full-width on very small screens, but keep compact rect CTAs their natural size */
+  .btn { width: 100%; }
+  .btn-rect { width: auto !important; display: inline-flex; }
 
   .project-card,
   .skill-card,
