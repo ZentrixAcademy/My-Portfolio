@@ -520,13 +520,15 @@ h2 {
 }
 
 .nav-toggle span {
+  /* hide visual bars but keep the clickable area */
   display: block;
-  width: 20px;
-  height: 2px;
-  margin: 3px 0;
-  background: #e7edf8;
-  border-radius: 999px;
-  transition: transform 200ms ease, opacity 200ms ease;
+  width: 0;
+  height: 0;
+  margin: 0;
+  background: transparent;
+  opacity: 0;
+  pointer-events: none;
+  transition: none;
 }
 
 .nav-toggle.open span:nth-child(1) {
