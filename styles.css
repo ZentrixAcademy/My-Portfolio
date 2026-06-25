@@ -767,6 +767,15 @@ h2 {
     display: inline-flex;
   }
 
+  /* ensure the visual bars are hidden on mobile too */
+  .nav-toggle span {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
   .info-grid,
   .project-grid,
   .skills-grid,
