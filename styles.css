@@ -173,6 +173,27 @@ h1 {
   transition: transform 0.2s ease, background 0.2s ease;
 }
 
+/* base button styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.18s ease, background 0.18s ease;
+}
+
+/* small rectangular button variant used for compact CTAs */
+.btn-rect {
+  padding: 8px 12px;
+  border-radius: 10px;
+  min-width: 0;
+  white-space: nowrap;
+}
+
 .btn:hover {
   transform: translateY(-2px);
 }
@@ -797,14 +818,7 @@ h2 {
 
   /* reduce hero-blob horizontal overflow on small screens */
   .hero-blob { right: -2%; left: auto; }
-  /* ensure the visual bars are hidden on mobile too */
-  .nav-toggle span {
-    display: none !important;
-    width: 0 !important;
-    height: 0 !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-  }
+  /* removed rule that forced hiding hamburger bars to allow visible burger */
 
   .info-grid,
   .project-grid,
